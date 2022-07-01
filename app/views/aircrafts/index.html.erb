@@ -1,0 +1,9 @@
+<h1>Air-traffic take off system</h1>
+<p>It manages the order of aircraft departing from a queue.</p>
+
+<% if $aircrafts.length > 0 %>
+    <%= button_to "Show Aircrafts", aircrafts_show_path, method: :get %>
+<% else %>
+    <p>To start the system, click the button below.</p>
+    <%= button_to "System boot", aircrafts_show_path, method: :get %>
+<% end %>

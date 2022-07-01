@@ -1,0 +1,181 @@
+10:35 AM
+No. 
+
+
+David, 10:36 AM
+Matt:  10:36 AM
+No... I mean would you have considered a different data construct?
+
+10:37 AM
+Hi David, I don't understand what he meant to consider a different data construct
+
+David, 10:38 AM
+I think he means a different data structure
+
+what did we use?
+
+queue?  stack?
+
+10:38 AM
+Stack
+
+David, 10:38 AM
+I will say maybe a Queue and Deque
+
+
+10:39 AM
+Wait
+Queue and Deque with comparators upon deque
+
+
+David, 10:40 AM
+Matt:  10:40 AM
+there’s a lot of different ways to do it, kinda like the old Perl saying TIMTOWTDI
+(There Is More Than One Way To Do It)
+
+10:41 AM
+Yes, it is. 
+
+
+David, 10:41 AM
+Matt:  10:41 AM
+another considering is performance, so with a single data construct to do a dequeue you essentially have to sweep the entire list multiple times, which of course as the list becomes longer becomes less desirable
+
+
+I will just say that is correct?
+
+10:42 AM
+Yes
+
+David, 10:44 AM
+Matt:  10:43 AM
+what is one way you could do that?
+
+10:44 AM
+I think the best way is to sort the list first with the precedence conditions and you can dequeue with the conditions
+
+David, 10:46 AM
+Matt:  10:45 AM
+when dequeuing would that look like sorting by type, then looking for a size of higher prio than the first one in the sorted type list?
+
+10:46 AM
+Yes
+sorting by type, then with the same type, checking with the size with higher prio (Large), then checking the earlier number upon enqueuing the item with the same type and same size
+
+David, 10:50 AM
+Matt:  10:49 AM
+and if we were going to attempt it without having to deal with the entire list on each dequeue what is an approach you might use?
+
+---
+
+Hi John, is a linked list applicable in this situation or no?
+
+10:51 AM
+I think it is
+
+David, 10:51 AM
+
+Implementation of Deque using doubly linked list - GeeksforGeeks
+https://www.geeksforgeeks.org
+
+
+10:55 AM
+This interview is different the one we had a live coding interview?
+
+David, 10:55 AM
+yes, for some reason that one rejected us, not sure why
+
+Matt:  10:56 AM
+a linked list would still require traversal though, meaning if you have a small cargo in the first position, the only way to find out if there is a large passenger in the list, is traverse the whole thing. perhaps I’m not understanding what you’re proposing?
+
+10:57 AM
+
+Matt:  10:49 AM
+and if we were going to attempt it without having to deal with the entire list on each dequeue what is an approach you might use?
+David Poarch, Today at 10:50 AM
+I think apply the sorting upon list size is greater than 3
+Wait
+I think I am not answering the question. hmmm
+
+David, 11:01 AM
+can an array be used for this?
+
+because array traversal would be faster
+
+11:01 AM
+I think apply sort and dequeue with the top of the sorted list that meets the expectation
+Yes. I used Array because it has the same functionality with the Queue in using Ruby
+
+David, 11:01 AM
+oh, so we are already using Array here in our code?
+
+11:01 AM
+Yes
+$aircrafts = Array.new
+We used global variable with Array data type
+Can you explain him about it? 
+
+David, 11:04 AM
+Matt:  11:03 AM
+so a cargo list and a passenger list?
+
+11:05 AM
+What did you say to him?
+
+David, 11:05 AM
+From Me to Everyone:  11:02 AM
+Perhaps instead, apply sort and dequeue with the top of the sorted list that meets the expectation
+
+11:06 AM
+No, there is no cargo and passenger lists. Only one list to enqueue and dequeue.
+Priority Queue
+We will use Priority Queue 
+
+
+David, 11:10 AM
+Matt:  11:10 AM
+another approach is 2 or 4 lists, basically move the dequeue logic to the add logic, its a fixed amount of work to define which list to put it in, and a fixed amount to grab the last element off of each in order of precedence (4) or sort one of the two based on size and grab the last.
+
+I will say that makes sense?
+
+11:11 AM
+Okay, yes.
+But I don't understand what he meant, David.
+
+David, 11:12 AM
+Matt:  11:12 AM
+the issue with the one list is, conceptually, and practicality as that list grows it becomes progressively more expensive to pull out of, even in the thousands its not going to really take that long in any language, but its there
+
+11:14 AM
+Yes, that make sense
+I think I understand what he meant, that we will separate with list of cargo and passenger and apply sort upon dequeue with high prio to Large size
+
+I hope he will not reject us.
+
+11:32 AM
+How was the interview? Did Matt said something?
+
+David, 11:33 AM
+yes, he said he will submit our answers to their team and they will review, but they still have several candidates to interview
+
+
+
+----------------
+
+
+
+
+From Alberto to Everyone:  10:41 AM
+But why do you think you can “access the data”?
+This is a web server in ruby
+One request is one thread
+The second request may be another thread
+Are you assuming they are the same thread?
+
+From Alberto to Everyone:  10:44 AM
+Ok, this is an important assumption and for future reference, you should note it in comments
+1) why you chose a global
+2) why do you think it will work
+Most web servers run different listener processes, so even a global is not shared among them
+
+
